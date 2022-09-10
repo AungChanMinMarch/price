@@ -3,7 +3,7 @@ const app =express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res)=>{
-	res.send("app is running")
+	res.send("hello there! app is running")
 })
 app.listen(PORT, ()=>{
 	console.log('server is running on port:', PORT);
