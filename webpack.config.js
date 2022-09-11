@@ -1,7 +1,7 @@
-require('dotenv').config();
 const webpack = require('webpack')
 const path = require('path');
 
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -21,8 +21,7 @@ module.exports = {
 
     },
     devServer:{
-        // host: '192.168.100.76',
-        port: process.env.PORT,
+        port: 2000,
         historyApiFallback: true
     },
 
@@ -46,6 +45,7 @@ module.exports = {
 
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new Dotenv(),
         new HtmlWebpackPlugin({
             filename: `index.html`,
             template: `./public/index.html`,
