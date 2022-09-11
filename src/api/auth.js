@@ -14,6 +14,7 @@ export const signOut = (callback) => {
 	})
 }
 export const signUp = (form, callback)=> {
+	console.log(process.env.API_URL);
 	POST('auth/signup', {
         email: form.email,
         password: form.password

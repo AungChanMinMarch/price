@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { env } from 'react-env-config'
 
 const instance = axios.create({
-	baseURL: process.env.API_URL || '/api/',
+	baseURL: process.env.API_URL || 'https://special-memory-api.aungchanminmarc.repl.co/',
 	headers: {
 		'Content-Type': 'application/json',
 		// timeout: 1000,
