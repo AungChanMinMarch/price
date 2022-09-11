@@ -1,3 +1,4 @@
+require('dotenv').config();
 const webpack = require('webpack')
 const path = require('path');
 
@@ -21,12 +22,10 @@ module.exports = {
     },
     devServer:{
         // host: '192.168.100.76',
-        port:2000,
+        port: process.env.PORT,
         historyApiFallback: true
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ],
+
     module: {
         rules: [
             {
@@ -38,15 +37,15 @@ module.exports = {
                         presets: ['@babel/preset-env', '@babel/preset-react']
                         }
                 }
-            },
-    // {
-    //             test: /\.css$/i,
-    //             use: ['style-loader','css-loader']
-    //         }
+            },{
+                test: /\.css$/i,
+                use: ['style-loader','css-loader']
+            }
         ]
     },
 
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             filename: `index.html`,
             template: `./public/index.html`,

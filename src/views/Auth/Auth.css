@@ -1,0 +1,23 @@
+.Auth{
+	width: 100%;
+	height: 80%;
+	padding: 30px;
+	flex-direction: column;
+}
+
+.Auth-header{
+	font-size: 48rem;
+	text-decoration: underline;
+	cursor: default;
+}
+
+.Auth-submit{
+	color: var(--main-color);
+	background-color: var(--sec-bgColor);
+}
+
+.Auth > h4{
+	cursor: pointer;
+	font-size: 20rem;
+	text-decoration: underline;
+}
