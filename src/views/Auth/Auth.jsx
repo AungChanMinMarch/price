@@ -13,6 +13,7 @@ const Auth = ({ onSubmit })=>{
 	const [form, setForm] = React.useState(initialForm);
 
 	const submit = ()=>{
+		console.log(process.env.API_URL);
 		if(!form.email) return toast.error('email can not be empty')
 		if(!form.password) return toast.error('password can not be empty')
 		if(isSignIn){
