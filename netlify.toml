@@ -1,5 +1,0 @@
-[[redirects]]
-	from = '/api/*'
-	to = "localhost:3000/:splat"
-	status = 200
-	force = true

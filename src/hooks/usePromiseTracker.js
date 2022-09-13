@@ -7,9 +7,9 @@ class Emitter {
 	on(fn){
 		this.updaterFn = fn
 	}
-	add(description, canceler){
+	add(description){
 		this.hasPromise = true;
-		this.updaterFn(true, description, canceler)
+		// this.updaterFn(true, description, canceler)
 	}
 	remove(){
 		this.hasPromise = false;
@@ -22,18 +22,18 @@ export const usePromiseTracker = ()=>{
 	const [promise, setPromise] = React.useState({
 		inProgress: false
 	})
-	const updatePromiseStatus = (anyPromise, description, canceler) => {
+	const updatePromiseStatus = (anyPromise, description) => {
 		if (!anyPromise) {
 			setPromise({ inProgress: false});
 		} else {
-			const promiseCanceller = ()=>{
-				setPromise({ inProgress: false})
-				canceler();
-			}
+			// const promiseCanceller = ()=>{
+			// 	setPromise({ inProgress: false})
+			// 	canceler();
+			// }
 			setPromise({
 				inProgress: true,
 				description: description || "",
-				promiseCanceller: promiseCanceller
+				// promiseCanceller: promiseCanceller
 			});
 		}
   	};
@@ -44,12 +44,12 @@ export const usePromiseTracker = ()=>{
 	})
 	return { promise }
 }
-export const trackPromise = (promise, description, canceler, callback)=>{
+export const trackPromise = (promise, description, callback)=>{
 	if(emitter.hasPromise){
 		console.log('sorry there has already existed a promise');
 		return
 	}
-	emitter.add(description, canceler);
+	emitter.add(description);
 	const onResolveHandler = (res) => {
 		toast.success(res.data.message)
 		callback(res);

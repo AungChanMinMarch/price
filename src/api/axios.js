@@ -11,15 +11,17 @@ const instance = axios.create({
 });
 
 export default (description, method, url, callback, data)=>{
-	const cancelTokenSource = axios.CancelToken.source();
-	const CANCEL = ()=>{
-		console.log('cancelTokenSource');
-		cancelTokenSource.cancel()
-	}
+	// const cancelTokenSource = axios.CancelToken.source();
+	// const CANCEL = ()=>{
+	// 	console.log('cancelTokenSource');
+	// 	cancelTokenSource.cancel()
+	// }
 	trackPromise(
-		instance({method, url, data, cancelToken: cancelTokenSource.token}),
+		instance({
+			method, url, data, 
+			// cancelToken: cancelTokenSource.token
+		}),
 		description,
-		CANCEL,
 		callback
 	)
 }

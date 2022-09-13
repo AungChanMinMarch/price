@@ -23,7 +23,7 @@ export const signOut = (callback) => {
 }
 export const signUp = (form, callback)=> {
 	axiosTrackPromise(
-		"signing out...",
+		"signing up...",
 		"POST",
 		'auth/signup', 
 		callback,

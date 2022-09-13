@@ -7,10 +7,10 @@ import { Nav } from "./components"
 import { usePromiseTracker } from "./hooks/usePromiseTracker.js"
 
 const App = ()=>{
-    const [isAuth, setIsAuth] = React.useState(false);
+    const [isAuth, setIsAuth] = React.useState(doesHttpOnlyCookieExist('special-memory-token'));
     const { promise } = usePromiseTracker();
     if(promise.inProgress)
-        return <Loading onCancel={promise.promiseCanceller} description={promise.description}/>
+        return <Loading description={promise.description}/>
     else if(!isAuth)
         return <Auth onSubmit={()=>setIsAuth(true)}/>
     return (
@@ -21,5 +21,12 @@ const App = ()=>{
             </Routes>
         </BrowserRouter>
     )
+}
+function doesHttpOnlyCookieExist(cookieName){
+    const newCookie = cookieName + '=new_value;path=/;'
+    document.cookie = newCookie
+    const doesExist = document.cookie.indexOf(cookieName + '=') === -1;
+    document.cookie = newCookie + '=;Max-Age=-999999'
+    return doesExist;
 }
 export default App
