@@ -1,14 +1,28 @@
-exports.signIn = (req, res)=>{
-	console.log('signing in..');
-	res.send('signing in...')
-}
+var jwt = require("jsonwebtoken");
+var User = require("../models/user");
+const token_max_age = 10 * 365 * 24 * 60 * 60 //10 YEARS
 
-exports.signUp = (req, res)=>{
-	console.log('signing up..');
-	res.send('signing up...')
-}
+exports.responseToken = (req, res)=>{
+    //signing token with user id
+    const token = jwt.sign({
+        id: req.userId,
+        email: req.userEmail
+    }, process.env.API_SECRET, {
+        expiresIn: token_max_age
+    });
 
-exports.signOut = (req, res)=>{
-	console.log('signing out..');
-	res.send('signing out...')
+    //responding to client request with user profile success message and  access token .
+    // res.setHeader('set-cookie', [`token=${token}`])
+    res.cookie(process.env.COOKIE_NAME, token, {
+        expires: new Date(Date.now() + token_max_age),
+        httpOnly: true
+    })
+    res.status(200).json({message: "Login successfull"});
+}
+exports.signOut = (req, res) => {
+    res.cookie(process.env.COOKIE_NAME, '', {
+        expires: new Date(Date.now()),
+        httpOnly: true
+    })
+    res.json({message: 'sign out Success'})
 }

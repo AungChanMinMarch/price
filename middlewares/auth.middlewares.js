@@ -1,32 +1,61 @@
 var bcrypt = require("bcrypt");
-var users = [];
+const User = require('./../models/user.js')
 
 exports.createUser = (req, res, next) => {
-    console.log(req.body);
-    console.log(req.body.email + 'is signing up...');
-    users.push({
-        name: req.body.name,
+    const user = new User({
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8)
-    })
-    next();
+    });
+    user.save((err, user) => {
+        if (err) {
+            return res.status(500).json({ message: err });
+        }
+        else{
+            console.log('user creation success');
+            req.userId = user._id
+            req.userEmail = user.email
+            next()
+        }
+    });
 };
 
-exports.checkPassword = (req, res, next) => {
-    console.log('checking password');
-    const userFound = users.filter(user => user.email === req.body.email)
-    console.log(userFound);
-    if(userFound.length === 0) res.status(401).json({ message: "no user found" });
-    if(userFound.length === 1) {
+exports.checkPassword = (req, res, next)=>{
+    User.findOne({
+        email: req.body.email
+    }, (err, user) => {
+        if (err) {
+            res.status(500).json({ message: err });
+            return;
+        }
+        if (!user) {
+            console.log('user with given email not found!!!');
+            return res.status(404).json({ message: "User Not found." });
+        }
 
-        const passwordIsValid = bcrypt.compareSync(
+        //comparing passwords
+        var passwordIsValid = bcrypt.compareSync(
             req.body.password,
-            userFound[0].password
+            user.password
         );
         // checking if password was valid and send response accordingly
         if (!passwordIsValid) {
             return res.status(401).json({ message: "Invalid Password!" });
         }
+        req.userId = user._id
+        req.userEmail = user.email
         next();
-    }
+    });
+};
+
+exports.check_duplicate_email = function(req, res, next){
+    User.findOne({
+        email: req.body.email
+    }).exec((err, user) => {
+        if (err) return res.status(500).json({ message: err });
+        else if (user) return res.status(409).json({ message: "Failed! Email is already in use!" });
+        else {
+            console.log('no duplicate email');
+            next();
+        }
+    });
 };
