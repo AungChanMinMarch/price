@@ -1,4 +1,5 @@
 import React from "react"
+import { toast } from "react-toastify"
 class Emitter {
 	constructor(){
 		this.hasPromise = false;
@@ -50,10 +51,15 @@ export const trackPromise = (promise, description, canceler, callback)=>{
 	}
 	emitter.add(description, canceler);
 	const onResolveHandler = (res) => {
-		callback(res)
+		toast.success(res.data.message)
+		callback(res);
 		emitter.remove()
 	}
-	const onRejectHandler = () =>emitter.remove()
+	const onRejectHandler = (err) => {
+		console.log(err);
+		toast.error(err.response.data.message)
+		emitter.remove()
+	}
 	promise.then(onResolveHandler).catch(onRejectHandler)
 	return promise
 }

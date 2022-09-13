@@ -6,7 +6,12 @@ const Loading = ({onCancel, description})=>{
 	// const { promiseInProgress, promiseCanceler } = usePromiseTracker();
 	return (
 		<div className="Loading">
-			{onCancel && <div className="load-closer" onClick={onCancel}>close btn</div>}
+			{onCancel && <img 
+				src="/img/close.svg" 
+				alt="cancel btn"
+				className="load-closer"
+				onClick={onCancel}
+			/>}
 			<div className="loader"></div>
 			<div className="load-description">{description || "Loading please wait..."}</div>
 		</div>
