@@ -1,24 +1,35 @@
-import { GET, POST } from './axios.js'
+import axios from 'axios'
+import axiosTrackPromise from "./axios.js"
 
 export const signIn = (form, callback) => {
-	POST('auth/signin', {
-    	email: form.email,
-    	password: form.password
-	}).then(()=>{
-		callback();
-	})
+	axiosTrackPromise(
+		"signing in...",
+		"POST",
+		'auth/signin',
+		callback,
+		{
+	    	email: form.email,
+	    	password: form.password
+		}
+	)
 }
 export const signOut = (callback) => {
-	GET('auth/signout').then(()=>{
-		callback()
-	})
+	axiosTrackPromise(
+		"signing out...",
+		'GET',
+		'auth/signout',
+		callback
+	)
 }
 export const signUp = (form, callback)=> {
-	console.log(process.env.API_URL);
-	POST('auth/signup', {
-        email: form.email,
-        password: form.password
-    }).then(()=>{
-    	callback();
-    })
+	axiosTrackPromise(
+		"signing out...",
+		"POST",
+		'auth/signup', 
+		callback,
+		{
+	        email: form.email,
+	        password: form.password
+	    }
+	)
 }

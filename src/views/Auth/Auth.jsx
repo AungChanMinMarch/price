@@ -1,21 +1,18 @@
 import React from "react"
 
-import { env } from 'react-env-config'
 import { toast } from 'react-toastify'
 
 import './Auth.css'
 import { Input } from '@app/components'
 import { signIn, signUp } from '@app/api/auth.js'
 
-const initialForm = {name: '', email:"", password: '', confirm_password:''}
+const initialForm = { email:"", password: '', confirm_password:''}
 
 const Auth = ({ onSubmit })=>{
 	const [isSignIn, setIsSignIn] = React.useState(true)
 	const [form, setForm] = React.useState(initialForm);
 
 	const submit = ()=>{
-		console.log(process.env.API_URL);
-		console.log(env('API_URL', '/api/'));
 		if(!form.email) return toast.error('email can not be empty')
 		if(!form.password) return toast.error('password can not be empty')
 		if(isSignIn){

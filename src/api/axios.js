@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { env } from 'react-env-config'
+import { trackPromise } from "@app/hooks/usePromiseTracker.js"
 
 const instance = axios.create({
 	baseURL: process.env.API_URL || 'https://special-memory-api.aungchanminmarc.repl.co/',
@@ -10,16 +10,35 @@ const instance = axios.create({
     withCredentials: true
 });
 
-export const POST = (pathname, data) => instance({
-    method: 'post',
-	url: pathname,
-	data: data
-})
-export const GET =  (pathname)=> instance({
-	method: 'get',
-	url: pathname,
-})
-export const DELETE =  (pathname)=> instance({
-	method: 'delete',
-	url: pathname,
-})
+export default (description, method, url, callback, data)=>{
+	const cancelTokenSource = axios.CancelToken.source();
+	const CANCEL = ()=>{
+		console.log('cancelTokenSource');
+		cancelTokenSource.cancel()
+	}
+	trackPromise(
+		instance({method, url, data, cancelToken: cancelTokenSource.token}),
+		description,
+		CANCEL,
+		callback
+	)
+}
+
+// export const POST = (pathname, data) => instance({
+//     method: 'post',
+// 	url: pathname,
+// 	data: data,
+// 	cancelToken: cancelTokenSource.token
+// })
+// export const GET =  (pathname)=> instance({
+// 	method: 'get',
+// 	url: pathname,
+// })
+// export const DELETE =  (pathname)=> instance({
+// 	method: 'delete',
+// 	url: pathname,
+// })
+// export const CANCEL = ()=>{
+// 	console.log('cancelTokenSource');
+// 	cancelTokenSource.cancel()
+// }
