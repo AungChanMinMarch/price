@@ -35,3 +35,8 @@ button, a {
 	border-radius: 5px;
 	text-decoration: none;
 }
+a{
+	display: block;
+	background-color: var(--main-color);
+	width: max-content;
+}

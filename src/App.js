@@ -2,7 +2,7 @@ import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import './App.css'
-import { Auth, Memories, Loading } from "./views"
+import { Auth, MemoriesRoute, Loading } from "./views"
 import { Nav } from "./components"
 import { usePromiseTracker } from "./hooks/usePromiseTracker.js"
 
@@ -17,7 +17,9 @@ const App = ()=>{
         <BrowserRouter>
             <Nav onLogOut={()=>setIsAuth(false)}/>
             <Routes>
-                <Route path="/" element={ <Memories /> }/>
+                <Route path="/" element={ <MemoriesRoute /> }/>
+                <Route path="/home" element={ <MemoriesRoute /> }/>
+                <Route path="/memories/*" element={ <MemoriesRoute /> } />
             </Routes>
         </BrowserRouter>
     )

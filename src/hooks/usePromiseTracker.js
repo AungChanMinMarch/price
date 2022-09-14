@@ -9,6 +9,7 @@ class Emitter {
 	}
 	add(description){
 		this.hasPromise = true;
+		this.updaterFn(true, description)
 		// this.updaterFn(true, description, canceler)
 	}
 	remove(){

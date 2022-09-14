@@ -1,0 +1,10 @@
+.Nav{
+	padding: 20px;
+	border-bottom: 3px solid blue;
+}
+.Nav-title{
+	font-size: 40rem;
+	letter-spacing: 4rem;
+	color: var(--sec-bgColor);
+	font-weight: 900;
+}
