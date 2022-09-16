@@ -4,16 +4,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import './App.css'
 import { Auth, MemoriesRoute, Loading } from "./views"
 import { Nav } from "./components"
-import { usePromiseTracker } from "./hooks/usePromiseTracker.js"
 
 const App = ()=>{
     const [isAuth, setIsAuth] = React.useState(doesHttpOnlyCookieExist('special-memory-token'));
-    const { promise } = usePromiseTracker();
-    if(promise.inProgress)
-        return <Loading description={promise.description}/>
-    else if(!isAuth)
+    if(!isAuth)
         return <Auth onSubmit={()=>setIsAuth(true)}/>
-    return (
+    else return (
         <BrowserRouter>
             <Nav onLogOut={()=>setIsAuth(false)}/>
             <Routes>
@@ -31,4 +27,4 @@ function doesHttpOnlyCookieExist(cookieName){
     document.cookie = newCookie + '=;Max-Age=-999999'
     return doesExist;
 }
-export default App
+export default App;

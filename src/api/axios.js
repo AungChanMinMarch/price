@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { trackPromise } from "@app/hooks/usePromiseTracker.js"
+import { trackPromise } from '@app/utils/PromiseTracker.js' 
 
 const instance = axios.create({
 	baseURL: process.env.API_URL || 'https://special-memory-api.aungchanminmarc.repl.co/',
@@ -16,14 +16,11 @@ export default (description, method, url, callback, data)=>{
 	// 	console.log('cancelTokenSource');
 	// 	cancelTokenSource.cancel()
 	// }
-	trackPromise(
-		instance({
-			method, url, data, 
-			// cancelToken: cancelTokenSource.token
-		}),
-		description,
-		callback
-	)
+	trackPromise(instance({
+		method, url, data, 
+		// cancelToken: cancelTokenSource.token
+	}), description, callback);
+	
 }
 
 // export const POST = (pathname, data) => instance({

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import axiosTrackPromise from "./axios.js"
 
 export const signIn = (form, callback) => {

@@ -15,3 +15,8 @@
 	font-size: 24rem;
 	border-radius: 5px;
 }
+
+.Input.radio{
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+}
