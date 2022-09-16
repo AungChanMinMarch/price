@@ -13,6 +13,9 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
 const routes = require('./routes');
 app.use(routes);
 

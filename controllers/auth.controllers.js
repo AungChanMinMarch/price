@@ -1,5 +1,4 @@
-var jwt = require("jsonwebtoken");
-var User = require("../models/user");
+const jwt = require("jsonwebtoken");
 const token_max_age = 10 * 365 * 24 * 60 * 60 //10 YEARS
 
 exports.responseToken = (req, res)=>{

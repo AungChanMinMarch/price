@@ -9,10 +9,10 @@ const userSchema = new Schema({
         trim: true,
         required: [true, "email not provided"],
         validate: {
-          validator: function (v) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-          },
-          message: '{VALUE} is not a valid email!'
+            validator: function (v) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+            },
+            message: '{VALUE} is not a valid email!'
         }
     },
     password: {
@@ -23,4 +23,4 @@ const userSchema = new Schema({
 
 // userSchema.index({ email: 1 }, { unique: true})
 
-module.exports = mongoose.model("User", userSchema)
+module.exports = mongoose.model("User", userSchema);
