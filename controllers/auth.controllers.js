@@ -14,14 +14,18 @@ exports.responseToken = (req, res)=>{
     // res.setHeader('set-cookie', [`token=${token}`])
     res.cookie(process.env.COOKIE_NAME, token, {
         expires: new Date(Date.now() + token_max_age),
-        httpOnly: true
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true
     })
     res.status(200).json({message: "Login successfull"});
 }
 exports.signOut = (req, res) => {
     res.cookie(process.env.COOKIE_NAME, '', {
         expires: new Date(Date.now()),
-        httpOnly: true
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true
     })
     res.json({message: 'sign out Success'})
 }
