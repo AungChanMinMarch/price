@@ -4,7 +4,8 @@ const MemoryTypes = require("../models/memoryTypes.js");
 exports.addMemory = (req, res)=>{
 	const { name, type } = req.body;
 	const newMemoryTypes = new MemoryTypes[type]({
-		name: name
+		name: name,
+		owner: req.userId
 	});
 	newMemoryTypes.save((err, newMemoryTypesDocs)=>{
 		const newMemory = new Memory({
@@ -27,6 +28,16 @@ exports.addMemory = (req, res)=>{
 
 exports.getMemories = (req, res)=>{
 	Memory.find({ owner: req.userId }, (err, memories)=>{
+		res.json({
+			message: "loaded memories successfully",
+			memories: memories
+		})
+	})
+}
+
+exports.getMemory = (req, res)=>{
+	const { type, id} = req.params;
+	MemoryTypes[type].find({ owner: req.userId }, (err, memories)=>{
 		res.json({
 			message: "loaded memories successfully",
 			memories: memories

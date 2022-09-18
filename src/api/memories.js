@@ -29,3 +29,12 @@ export const getMemories = (callback)=>{
 		callback
 	)
 }
+
+export const getMemory = (type, id, callback)=>{
+	axiosTrackPromise(
+		"Loading your memories... please wait a second...",
+		"GET",
+		`/memory/${type}/${id}`,
+		callback
+	)
+}
