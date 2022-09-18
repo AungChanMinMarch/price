@@ -1,0 +1,22 @@
+.Input{
+	width: 90%;
+	max-width: 600px;
+	display: flex;
+	flex-direction: column;
+	margin: 15px auto;
+}
+.Input > label{
+	color: var(--main-color);
+	font-size: 24rem;
+	letter-spacing: 1.1px;
+}
+.Input > input{
+	padding: 5px 10px;
+	font-size: 24rem;
+	border-radius: 5px;
+}
+
+.Input.radio{
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+}

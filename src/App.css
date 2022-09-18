@@ -1,0 +1,42 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root{
+	font-size: 1px;
+}
+#root{
+	--main-bgColor:  #040224;
+	--sec-bgColor:  #190af2;
+	--primary:  #090047;
+	--sec: #003d45;
+	--main-color:  #fff;
+	--sec-color:  #ddd;
+
+	width: 100vw;
+	height: 100vh;
+	overflow-y: hidden;
+	background-color: var(--main-bgColor);
+	color: var(--main-color);
+	font-size: 16rem;
+}
+
+.fbox{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+button, a {
+	cursor: pointer;
+	font-size: 20rem;
+	padding: 10px 12px;
+	border-radius: 5px;
+	text-decoration: none;
+}
+a{
+	display: block;
+	background-color: var(--main-color);
+	width: max-content;
+}
