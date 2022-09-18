@@ -3,10 +3,9 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = {
+const config = {
 
     entry: './src/index.js',
-    devtool: "eval-cheap-source-map",
 
     output: {
         path: path.join(__dirname, '/dist'),
@@ -47,4 +46,10 @@ module.exports = {
             inject: "body",
         }),
     ]
+}
+module.exports = (env, argv)=> {
+    if (argv.mode === 'development') {
+        config.devtool = 'eval-cheap-source-map';
+    }
+    return config;
 }

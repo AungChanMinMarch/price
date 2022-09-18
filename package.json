@@ -7,8 +7,6 @@
         "node": "16.x"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon server.js",
         "deploy": "webpack --mode production && node server.js",
         "start:react": "webpack --mode development --watch",
         "start:express": "nodemon server.js",
