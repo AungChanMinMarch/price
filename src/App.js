@@ -2,7 +2,7 @@ import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import './App.css'
-import { Auth, MemoriesRoute, Loading } from "./views"
+import { Auth, MemoriesRoute, Loading, Memory } from "./views"
 import { Nav } from "./components"
 
 const App = ()=>{
@@ -16,6 +16,7 @@ const App = ()=>{
                 <Route path="/" element={ <MemoriesRoute /> }/>
                 <Route path="/home" element={ <MemoriesRoute /> }/>
                 <Route path="/memories/*" element={ <MemoriesRoute /> } />
+                <Route path="/memory/:type/:id" element={ <Memory /> } />
             </Routes>
         </BrowserRouter>
     )

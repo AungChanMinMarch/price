@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 import { getMemories } from "app/api/memories.js"
+import MemorySlug from "./components/MemorySlug.jsx"
 import './Memories.css'
 
 const Memories = ()=>{
@@ -19,9 +20,9 @@ const Memories = ()=>{
 	return (
 		<>
 			<div>This is Memories page</div>
-			<div>{
+			<div className="MemorySlug-container">{
 				memories?.map(memory => (
-					<div key={memory._id}>{memory.name}</div>
+					<MemorySlug key={memory._id} memory={memory}/>
 				))
 			}</div>
 			<div className="add-memory-container">

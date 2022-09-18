@@ -1,3 +1,10 @@
+.MemorySlug-container{
+	width: 100%;
+	justify-content: space-around;
+	display: flex;
+	flex-flow: row wrap;
+}
+
 .add-memory-container{
 	position: fixed;
 	bottom: 0;

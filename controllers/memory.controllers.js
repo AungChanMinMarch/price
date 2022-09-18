@@ -19,7 +19,6 @@ exports.addMemory = (req, res)=>{
 	        }
 	        else{
 	            console.log('memory creation success');
-	            console.log(memory);
 				res.json({ message: "memory creation success"})
 	        }
 		})
@@ -27,8 +26,7 @@ exports.addMemory = (req, res)=>{
 }
 
 exports.getMemories = (req, res)=>{
-	Memory.find({}, (err, memories)=>{
-		console.log(memories);
+	Memory.find({ owner: req.userId }, (err, memories)=>{
 		res.json({
 			message: "loaded memories successfully",
 			memories: memories

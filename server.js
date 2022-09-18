@@ -11,7 +11,8 @@ app.use(cookieParser());
 
 const routes = require('./routes');
 app.use("/api",routes);
-app.use(express.static("dist"));
+app.use("/",express.static("dist"));
+app.use("*",express.static("dist"));
 
 const PORT = process.env.PORT || 3000;
 const mongoose = require('mongoose');
