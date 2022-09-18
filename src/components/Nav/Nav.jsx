@@ -1,7 +1,7 @@
 import React from "react"
 
 import './Nav.css'
-import { signOut } from '@app/api/auth'
+import { signOut } from 'app/api/auth'
 
 const Nav = ({ onLogOut })=>{
 	return (

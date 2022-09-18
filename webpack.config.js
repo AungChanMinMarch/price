@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const dotEnv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -17,7 +16,7 @@ module.exports = {
 
     resolve : {
         alias: {
-            "@app": path.resolve(__dirname, 'src/')
+            "app": path.resolve(__dirname, 'src/')
         }
 
     },
@@ -42,7 +41,6 @@ module.exports = {
 
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new dotEnv(),
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: "./public/index.html",

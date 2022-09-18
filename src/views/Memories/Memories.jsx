@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-import { getMemories } from "@app/api/memories.js"
+import { getMemories } from "app/api/memories.js"
 import './Memories.css'
 
 const Memories = ()=>{

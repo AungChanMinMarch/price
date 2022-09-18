@@ -1,6 +1,6 @@
 import React from "react"
 
-import { InputFooter } from "@app/components"
+import { InputFooter } from "app/components"
 import './JoinMemory.css'
 
 const JoinMemory = ()=>{

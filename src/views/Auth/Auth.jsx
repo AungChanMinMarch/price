@@ -3,8 +3,8 @@ import React from "react"
 import { toast } from 'react-toastify'
 
 import './Auth.css'
-import { Input } from '@app/components'
-import { signIn, signUp } from '@app/api/auth.js'
+import { Input } from 'app/components'
+import { signIn, signUp } from 'app/api/auth.js'
 
 const initialForm = { email:"", password: '', confirm_password:''}
 

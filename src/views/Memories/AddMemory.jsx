@@ -1,7 +1,7 @@
 import React from "react"
 
-import { Input, RadioInput, InputFooter } from '@app/components';
-import { addMemory } from '@app/api/memories.js';
+import { Input, RadioInput, InputFooter } from 'app/components';
+import { addMemory } from 'app/api/memories.js';
 import './AddMemory.css';
 
 const initialAddMemoryForm = { name: "", addMemoryType: "price"};

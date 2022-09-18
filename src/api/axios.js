@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { trackPromise } from '@app/utils/PromiseTracker.js' 
+import { trackPromise } from 'app/utils/PromiseTracker.js' 
 
 const instance = axios.create({
 	baseURL: '/api',
