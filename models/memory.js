@@ -3,11 +3,25 @@ const Schema = mongoose.Schema;
 
 const memorySchema = new Schema({
 	name: String,
-	type: {
+	memory: {
+		type: Schema.Types.ObjectId,
+		refPath: "memoryType",
+		required: true
+	},
+	memoryType: {
 	    type: String,
 	    required: true,
-	    enum: ['price', 'todo']
-	}
+	    enum: ['PriceMemory', 'ScheduleMemory']
+	},
+	owner: {
+		type: Schema.Types.ObjectId,
+		ref: "User",
+		required: true
+	},
+	users: [{
+		type: Schema.Types.ObjectId,
+		ref: "User"
+	}]
 });
 
 module.exports = mongoose.model("Memory", memorySchema);
