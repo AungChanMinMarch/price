@@ -8,7 +8,6 @@ specifiers:
   babel-loader: ^8.2.5
   bcrypt: ^5.0.1
   cookie-parser: ^1.4.6
-  cors: ^2.8.5
   css-loader: ^6.7.1
   dotenv: ^16.0.2
   dotenv-webpack: ^8.0.1
@@ -33,7 +32,6 @@ dependencies:
   babel-loader: 8.2.5_89e430e495307b3464675ac1d4c826c5
   bcrypt: 5.0.1
   cookie-parser: 1.4.6
-  cors: 2.8.5
   dotenv: 16.0.2
   dotenv-webpack: 8.0.1_webpack@5.74.0
   express: 4.18.1
@@ -1950,14 +1948,6 @@ packages:
     resolution: {integrity: sha512-pOHS7O0i8Qt4zlPW/eIFjwp+NrTPx+wTL0ctgI2fHn31sZOq89rDsmtc/A2vAX7r6shl+bmVI+678He46jgBlw==}
     dependencies:
       browserslist: 4.21.4
-    dev: false
-
-  /cors/2.8.5:
-    resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
-    engines: {node: '>= 0.10'}
-    dependencies:
-      object-assign: 4.1.1
-      vary: 1.1.2
     dev: false
 
   /cross-spawn/7.0.3:

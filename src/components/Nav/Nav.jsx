@@ -6,7 +6,7 @@ import { signOut } from 'app/api/auth'
 const Nav = ({ onLogOut })=>{
 	return (
 		<nav className="Nav fbox">
-			<a href="/" className='Nav-title'>Memories</a>
+			<a href="/" className='Nav-title'>Prices</a>
 			<button onClick={()=>signOut(onLogOut)}>SignOut</button>
 		</nav>
 	)

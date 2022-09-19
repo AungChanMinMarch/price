@@ -2,7 +2,7 @@ import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import './App.css'
-import { Auth, MemoriesRoute, Loading, Memory } from "./views"
+import { Auth, Home, Loading, Add } from "./views"
 import { Nav } from "./components"
 
 const App = ()=>{
@@ -13,10 +13,10 @@ const App = ()=>{
         <BrowserRouter>
             <Nav onLogOut={()=>setIsAuth(false)}/>
             <Routes>
-                <Route path="/" element={ <MemoriesRoute /> }/>
-                <Route path="/home" element={ <MemoriesRoute /> }/>
-                <Route path="/memories/*" element={ <MemoriesRoute /> } />
-                <Route path="/memory/:type/:id" element={ <Memory /> } />
+                <Route path="/" element={ <Home /> }/>
+                <Route path="/home" element={ <Home /> }/>
+                <Route path="/add" element={ <Add /> }/>
+                <Route path="/auth" element={<Auth onSubmit={()=>setIsAuth(true)} />} />
             </Routes>
         </BrowserRouter>
     )

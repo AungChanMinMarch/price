@@ -1,6 +1,6 @@
 import axiosTrackPromise from "./axios.js"
 
-export const addMemory = (form)=>{
+export const addNewItem = (form)=>{
 	function callback(res){
 		if(res.status === 200){
 			// window.location.replace("/memories")
@@ -10,9 +10,9 @@ export const addMemory = (form)=>{
 		}
 	}
 	axiosTrackPromise(
-		"Creating New Memory",
+		"Adding New Item...",
 		"POST",
-		"/memories",
+		"/",
 		callback,
 		{
 			name: form.name,
@@ -21,20 +21,11 @@ export const addMemory = (form)=>{
 	)
 }
 
-export const getMemories = (callback)=>{
+export const getApp = (callback)=>{
 	axiosTrackPromise(
-		"Loading your memories... please wait a second...",
+		"Loading your app... please wait a second...",
 		"GET",
-		"/memories",
-		callback
-	)
-}
-
-export const getMemory = (type, id, callback)=>{
-	axiosTrackPromise(
-		"Loading your memories... please wait a second...",
-		"GET",
-		`/memory/${type}/${id}`,
+		"/",
 		callback
 	)
 }

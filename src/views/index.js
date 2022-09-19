@@ -1,3 +1,3 @@
 export { default as Auth } from './Auth/Auth.jsx'
-export { default as MemoriesRoute } from './Memories/MemoriesRoute.js'
-export { default as Memory } from './Memory/Memory.jsx'
+export { default as Home } from './Home/Home.jsx'
+export { default as Add } from './Add/Add.jsx'
