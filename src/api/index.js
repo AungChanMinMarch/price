@@ -14,10 +14,7 @@ export const addNewItem = (form)=>{
 		"POST",
 		"/",
 		callback,
-		{
-			name: form.name,
-			type: form.addMemoryType
-		}
+		form
 	)
 }
 

@@ -1,5 +1,8 @@
+const Item = require("../models/item.js")
+
 exports.addItem = (req, res)=>{
 	const { name, place, price, from, date } = req.body;
+	console.log(req.body);
 	const newItem = new Item({
 		name: name,
 		owner: req.userId,

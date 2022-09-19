@@ -8,12 +8,8 @@ const itemSchema = new Schema({
 		ref: "User",
 		required: true
 	},
-	visibility: {
-		type: Boolean,
-		default: false
-	},
 	place: String,
-	price: String,
+	price: Number,
 	from: String,
 	date: Date
 });
