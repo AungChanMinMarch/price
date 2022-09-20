@@ -16,6 +16,7 @@ const App = ()=>{
                 <Route path="/" element={ <Home /> }/>
                 <Route path="/home" element={ <Home /> }/>
                 <Route path="/add" element={ <Add /> }/>
+                <Route path="/edit/:id" element={ <Add /> }/>
                 <Route path="/auth" element={<Auth onSubmit={()=>setIsAuth(true)} />} />
             </Routes>
         </BrowserRouter>

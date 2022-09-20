@@ -1,0 +1,16 @@
+.ItemSlug{
+	width: 40vw;
+	min-width: 300px;
+	max-width: 500px;
+	padding: 30px 15px;
+	margin: 20px;
+	background-color: var(--sec-bgColor);
+}
+.ItemSlug-nav{
+	display: flex;
+	align-items: center;
+}
+.ItemSlug-header{
+	flex: 1;
+	font-size: 24rem;
+}

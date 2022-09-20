@@ -1,20 +1,27 @@
 import axiosTrackPromise from "./axios.js"
+import getDiffObj from "app/utils/getObjDiff.js"
 
-export const addNewItem = (form)=>{
-	function callback(res){
-		if(res.status === 200){
-			// window.location.replace("/memories")
-			// window.location.href = "/memories"
-			//using this but I don't like this. BUt both above refresh page
-			history.back();
-		}
-	}
+export const addNewItem = (form, callback)=>{
 	axiosTrackPromise(
 		"Adding New Item...",
 		"POST",
 		"/",
 		callback,
 		form
+	)
+}
+export const updateItem = (initial, form, callback) => {
+	const diff = getDiffObj(initial, form);
+	if(diff === {}){
+		alert("You cannot update without changing values")
+		return;
+	}
+	axiosTrackPromise(
+		"Updating Item...",
+		"PUT",
+		`/${initial._id}`,
+		callback,
+		diff
 	)
 }
 

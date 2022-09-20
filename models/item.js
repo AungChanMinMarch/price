@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const { changesTracker } = require("./index.js") 
 
 const itemSchema = new Schema({
 	name: String,
@@ -11,7 +12,7 @@ const itemSchema = new Schema({
 	place: String,
 	price: Number,
 	from: String,
-	date: Date
+	date: String
 });
-
+itemSchema.plugin(changesTracker)
 module.exports = mongoose.model("Item", itemSchema);

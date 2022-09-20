@@ -2,7 +2,7 @@ import React from "react"
 
 import './Input.css'
 
-const Input = ({label, type, name, state, setter})=>{
+const Input = ({label, type, name, state, setter, defaultValue})=>{
 	const changeHandler = (e)=>{
 		setter(prev => ({...prev, [name]: e.target.value}))
 	}
@@ -13,7 +13,9 @@ const Input = ({label, type, name, state, setter})=>{
 				type={type ||"text"} 
 				id={name} 
 				value={state[name]}
-				onChange={changeHandler}/>
+				onChange={changeHandler}
+				defaultValue={defaultValue}
+				/>
 		</div>
 	)
 }

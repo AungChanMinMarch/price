@@ -6,9 +6,10 @@ router.use('/auth', authRoutes);
 
 const authUser = require("../middlewares/authUser.js");
 
-const {getApp, addItem} = require("../controllers/app.controllers.js")
+const {getApp, addItem, updateItem} = require("../controllers/app.controllers.js")
 
 router.get("/", authUser, getApp)
 router.post("/", authUser, addItem)
+router.put("/:id", authUser, updateItem)
 
 module.exports = router;

@@ -1,34 +1,61 @@
 import React from "react"
+import { useParams, useLocation, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 
-import { Input, RadioInput, InputFooter } from 'app/components';
-import { addNewItem } from 'app/api';
+import { Input, RadiosInput, InputFooter } from 'app/components';
+import { addNewItem, updateItem } from 'app/api';
 import './Add.css';
 
-const initialForm = { name: "", price:  0, from: "", time: new Date(), place: 'PriceMemory' };
-
 const AddItem = ()=>{
-	const [newItemForm, setNewItemForm] = React.useState({});
-	const submitItem = ()=>{
-		addNewItem(newItemForm);
-	}
+	const { state } = useLocation();
+	const { id } = useParams();
+	const navigate = useNavigate();
 
+	const [itemForm, setItemForm] = React.useState(state?.item || {});
+	const cb=()=>{
+		navigate("/");
+	}
+	const submitItem = ()=>{
+		if(!itemForm.name || itemForm.name == ""){
+			return toast.error("Item Name cannot be empty");
+		}
+		if(!itemForm.price || itemForm.price == 0){
+			return toast.error("Item price cannot be empty");
+		}
+		if(id) {
+			return updateItem(state?.item, itemForm,cb)
+		}
+		addNewItem(itemForm, cb);
+	}
+	React.useEffect(()=>{
+		if(!state) navigate("/") // don't navigate ask to backend
+	}, []);
+	const today = new Date().toISOString().substring(0, 10);
 	return (
 		<div className="AddMemory">
-			<h2>Add New Item</h2>
-			<Input label="Name" name="name" state={newItemForm} setter={setNewItemForm}/>
-			<Input label="Price" name="price" state={newItemForm} setter={setNewItemForm} type="number"/>
+			{id
+				? <h2>{state?.item?.name}</h2>
+				: <h2>Add New Item</h2>
+			}
+			{!id && <Input label="Name" name="name" state={itemForm} setter={setItemForm}/>}
+			<Input label="Price" name="price" state={itemForm} setter={setItemForm} type="number"/>
 
-			<RadioInput
-				radios={[
-					{ value:'PriceMemory', label: "Price Memory" }, 
-					{ value:'ScheduleMemory', label: "To Do Memory" }, 
-				]}
-				name="Place"
-				state={newItemForm}
-				setter={setNewItemForm} />
+			{state?.places && <RadiosInput
+				label="Place"
+				name="place"
+				state={itemForm}
+				setter={setItemForm} 
+				radios={state.places?.map((place)=>({value: place, label: place}))} />}
 
-			<Input label="Buy From" name="from" state={newItemForm} setter={setNewItemForm}/>
-			<Input label="Time" name="time" state={newItemForm} setter={setNewItemForm} type="date"/>
+			{state?.froms && <RadiosInput
+				label="Shop You Bought"
+				name="from"
+				state={itemForm}
+				setter={setItemForm} 
+				radios={state?.froms?.map((from)=>({value: from, label: from}))}
+				/>}
+
+			<Input label="Date" name="date" state={itemForm} setter={setItemForm} type="date" defaultValue={today}/>
 			
 			<InputFooter submitHandler={submitItem} />
 		</div>

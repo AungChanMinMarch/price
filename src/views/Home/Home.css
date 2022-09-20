@@ -23,3 +23,18 @@
 	transform: translate(7.5px, 23px);
 	border-bottom: 4px solid #000;
 }
+.item{
+	background-color: var(--sec-bgColor);
+}
+main{
+	font-size: 24rem;
+}
+.group{
+	display: flex;
+    flex-flow: row wrap;
+}
+#selectGp{
+	padding: 10px 5px;
+	margin: 10px 5px;
+	font-size: inherit;
+}
