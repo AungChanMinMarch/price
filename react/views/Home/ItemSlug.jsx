@@ -8,10 +8,10 @@ const ItemSlug = ({item, navToEdit})=>{
 	const [isExpended, setIsExpended] = React.useState(false);
 	return (
 		<div className="ItemSlug" >
-			<div className="ItemSlug-nav">
+			<div className="ItemSlug-nav fbox">
 				<header className="ItemSlug-header fbox">
-					<h2>{item.name}</h2>
-					<h4>{item.price}</h4>
+					<h3>{item.name}</h3>
+					<h4 className="ItemSlug-price">{item.price}</h4>
 				</header>
 				<img 
 					src="/svg/edit.svg" 

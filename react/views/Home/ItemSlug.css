@@ -1,19 +1,23 @@
 .ItemSlug{
-	width: 40vw;
-	min-width: 200px;
-	max-width: 400px;
-	margin: 20px;
+	width: 90vw;
+	max-width: 350px;
+	margin: 20px auto;
 	background-color: var(--sec-color);
 	color: #000;
 }
 .ItemSlug-nav{
-	display: flex;
-	height: 75px;
+	min-height: 50px;
 	align-items: center;
 }
 .ItemSlug-header{
 	flex: 1;
 	font-size: 20rem;
+	flex-flow: row wrap;
+}
+.ItemSlug-price{
+	color: red;
+	font-style: italic;
+	font-weight: 700;
 }
 .ItemSlug-btn{
 	cursor: pointer;

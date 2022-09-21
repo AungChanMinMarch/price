@@ -23,8 +23,8 @@ const Home = ()=>{
 			if(Places.indexOf(item.place) === -1 && item.place !== undefined){
 				Places.push(item.place);
 			}
-			if(Froms.indexOf(item.froms) === -1 && item.froms !== undefined){
-				Froms.push(item.froms);
+			if(Froms.indexOf(item.from) === -1 && item.from !== undefined){
+				Froms.push(item.from);
 			}
 		})
 		setPlaces(Places);
@@ -41,9 +41,11 @@ const Home = ()=>{
 		places.map(placeName => {
 			gps[placeName] = [];
 		})
+		gps.undefined = [];
 		items.map(item => {
 			if(item.place) //item[activeGp] is not undefined
 				gps[item.place].push(item)
+			else gps.undefined.push(item)
 		})
 		return gps
 	}
@@ -66,12 +68,15 @@ const Home = ()=>{
 					{(active != null)
 					? <div className="group">
 						{itemsGrouped[active]?.map(item => <ItemSlug key={item._id} item={item} navToEdit={navToEdit}/>)}
+						<ItemSlug key={item._id} item={item} navToEdit={navToEdit}/>
 					</div>
-					: places?.map(placeName => (
+					: itemsGrouped && Object.keys(itemsGrouped)?.map(placeName => (
 						<fieldset key={placeName} className="group">
 							<legend>{placeName}</legend>
+							<div className="ItemSlug-container">
 							{itemsGrouped[placeName].map(item => <ItemSlug key={item._id} item={item} navToEdit={navToEdit}/>)
 							}
+							</div>
 						</fieldset> 
 					))
 					}

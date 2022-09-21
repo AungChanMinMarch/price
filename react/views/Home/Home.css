@@ -30,6 +30,8 @@
 }
 main{
 	font-size: 20rem;
+	width: 95vw;
+	margin: auto;
 }
 nav{
 	padding: 20px;
@@ -38,6 +40,11 @@ nav{
 	gap:  20px;
 }
 .group{
+	width: 100%;
+	max-width: 90vw;
+	margin: auto;
+}
+.ItemSlug-container{
 	display: flex;
     flex-flow: row wrap;
 }
