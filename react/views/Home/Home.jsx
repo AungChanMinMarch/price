@@ -8,81 +8,78 @@ import './Home.css'
 
 const Home = ()=>{
 	const [items, setItems] = React.useState(null);
-	const [groupObj, setGroupObj] = React.useState({});
-	const [activeGp, setActiveGp] = React.useState(false);
+	const [places, setPlaces] = React.useState(null);
+	const [froms, setFroms] = React.useState(null);
+	const [active, setActive] = React.useState(null);
+
 	const navigate = useNavigate();
 
-	const gpTypes = Object.keys(groupObj);
 	const noGpProperties = ["name", "_id", "owner"];
 	const setFn = (res)=>{
 		const resItems = res.data.items;
-		let gpObj = {};
+		let Places = [];
+		let Froms = [];
 		resItems.forEach((item) =>{
-			for(let property in item){
-				if(noGpProperties.indexOf(property) > -1) continue;
-				if(!gpObj[property]) gpObj[property]=[];
-				if(gpObj[property].indexOf(item[property]) === -1 && item[property] !== undefined){
-					gpObj[property].push(item[property]);
-				}
+			if(Places.indexOf(item.place) === -1 && item.place !== undefined){
+				Places.push(item.place);
+			}
+			if(Froms.indexOf(item.froms) === -1 && item.froms !== undefined){
+				Froms.push(item.froms);
 			}
 		})
-		setGroupObj(gpObj);
+		setPlaces(Places);
+		setFroms(Froms);
 		setItems(resItems);
 	}
 	React.useEffect(()=>{
 		getApp(setFn);
 	}, []);
-	const changeHandler = (e)=> {
-		setActiveGp(e.target.value);
-	}
+
 	function groupItems(){
-		if(!activeGp || activeGp === "false") return items;
+		if(!items) return ;
 		let gps = {};
-		groupObj[activeGp].map(gpName => {
-			gps[gpName] = [];
+		places.map(placeName => {
+			gps[placeName] = [];
 		})
 		items.map(item => {
-			if(item[activeGp]) //item[activeGp] is not undefined
-			gps[item[activeGp]].push(item)
+			if(item.place) //item[activeGp] is not undefined
+				gps[item.place].push(item)
 		})
 		return gps
 	}
 	const itemsGrouped = groupItems();
-	const navToEdit = (item) => ()=>navigate(`/edit/${item._id}`, { state: {item: item, froms: groupObj.from, places: groupObj.place}}) 
+	const navToEdit = (item) => ()=>navigate(`/edit/${item._id}`, { state: { item, froms, places }});
+	const onClick = (newValue) => ()=>setActive(newValue);
 	return (
 		<div>
 			{
 				items?.length === 0
-				? <h1>There is No Item... Please Add</h1>
+				? <h1>There is No Item... Please Add...</h1>
 				: <main>
-					<nav>
-						<label htmlFor="selectGp">Group By</label>
-						<select value={activeGp} id="selectGp" onChange={changeHandler}>
-							<option value={false}> ---- </option>
-							{gpTypes?.map(gpType=>(
-								<option key={gpType} value={gpType}>
-									{gpType}
-								</option>
-							))}
-						</select>
-					</nav>
-					{(activeGp && groupObj[activeGp])
-					? groupObj[activeGp].map(gpName => (
-						<fieldset key={gpName} className="group">
-							<legend>{gpName}</legend>
-							{itemsGrouped[gpName].map(item => <ItemSlug key={item._id} item={item} navToEdit={navToEdit} gpTypes={gpTypes}/>)
+					{places?.length > 0 && <nav>
+						<button onClick={onClick(null)}>All</button>
+						{places.map(placeName => (
+							<button key={placeName} onClick={onClick(placeName)}>{placeName}</button>
+						))
+						}
+					</nav>}
+					{(active != null)
+					? <div className="group">
+						{itemsGrouped[active]?.map(item => <ItemSlug key={item._id} item={item} navToEdit={navToEdit}/>)}
+					</div>
+					: places?.map(placeName => (
+						<fieldset key={placeName} className="group">
+							<legend>{placeName}</legend>
+							{itemsGrouped[placeName].map(item => <ItemSlug key={item._id} item={item} navToEdit={navToEdit}/>)
 							}
 						</fieldset> 
 					))
-					: <div className="group">
-						{items?.map(item => <ItemSlug key={item._id} item={item} navToEdit={navToEdit} gpTypes={gpTypes}/>)}
-					</div>
 					}
 				</main>
 			}
 			<div 
 				className="add-icon add-item-icon"
-				onClick={()=>navigate("/add", { state: { froms: groupObj.from, places: groupObj.place}})}
+				onClick={()=>navigate("/add", { state: { froms, places}})}
 			></div>
 		</div>
 	)

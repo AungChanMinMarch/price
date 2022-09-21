@@ -2,7 +2,9 @@ import React from "react"
 
 import './ItemSlug.css'
 
-const ItemSlug = ({item, navToEdit, gpTypes})=>{
+const gpTypes = ["from", "interest", "amount"]
+
+const ItemSlug = ({item, navToEdit})=>{
 	const [isExpended, setIsExpended] = React.useState(false);
 	return (
 		<div className="ItemSlug" >
