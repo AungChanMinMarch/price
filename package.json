@@ -7,9 +7,9 @@
         "node": "16.x"
     },
     "scripts": {
-        "deploy": "webpack --mode production && node server.js",
+        "deploy": "node ./express/server.js",
         "start:react": "webpack --mode development --watch",
-        "start:express": "nodemon server.js",
+        "start:express": "nodemon ./express/server.js",
         "build": "webpack --mode production"
     },
     "keywords": [],

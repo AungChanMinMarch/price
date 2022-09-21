@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const config = {
 
-    entry: './src/index.js',
+    entry: './react/index.js',
 
     output: {
         path: path.join(__dirname, '/dist'),
