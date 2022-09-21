@@ -40,14 +40,14 @@ const AddItem = ()=>{
 			{!id && <Input label="Name" name="name" state={itemForm} setter={setItemForm}/>}
 			<Input label="Price" name="price" state={itemForm} setter={setItemForm} type="number"/>
 
-			{state?.places && <RadiosInput
+			{state && <RadiosInput
 				label="Place"
 				name="place"
 				state={itemForm}
 				setter={setItemForm} 
 				radios={state.places?.map((place)=>({value: place, label: place}))} />}
 
-			{state?.froms && <RadiosInput
+			{state && <RadiosInput
 				label="Shop You Bought"
 				name="from"
 				state={itemForm}
