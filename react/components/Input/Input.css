@@ -1,9 +1,10 @@
 .Input, .RadiosInput{
-	width: 90%;
-	max-width: 600px;
 	display: flex;
 	flex-direction: column;
-	margin: 15px auto;
+	margin: 20px auto;
+}
+.RadiosInput{
+	padding: 10px 20px;
 }
 .Input > label, .RadiosInput > legend{
 	color: var(--main-color);

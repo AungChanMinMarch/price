@@ -9,10 +9,10 @@ app.use(express.json());
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
-const routes = require('./routes');
+const routes = require('./express/routes');
 app.use("/api",routes);
-app.use("/",express.static("dist"));
-app.use("*",express.static("dist"));
+app.use("/",express.static("public"));
+app.use("*",express.static("public"));
 
 const PORT = process.env.PORT || 3000;
 const mongoose = require('mongoose');

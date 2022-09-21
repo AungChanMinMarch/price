@@ -12,6 +12,8 @@ const itemSchema = new Schema({
 	place: String,
 	price: Number,
 	from: String,
+	interest: Number,
+	amount: Number,
 	date: String
 });
 itemSchema.plugin(changesTracker)

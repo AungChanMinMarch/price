@@ -1,16 +1,38 @@
 .ItemSlug{
 	width: 40vw;
-	min-width: 300px;
-	max-width: 500px;
-	padding: 30px 15px;
+	min-width: 200px;
+	max-width: 400px;
 	margin: 20px;
-	background-color: var(--sec-bgColor);
+	background-color: var(--sec-color);
+	color: #000;
 }
 .ItemSlug-nav{
 	display: flex;
+	height: 75px;
 	align-items: center;
 }
 .ItemSlug-header{
 	flex: 1;
-	font-size: 24rem;
+	font-size: 20rem;
+}
+.ItemSlug-btn{
+	cursor: pointer;
+	height: 100%;
+}
+.ItemSlug-editBtn{
+	background-color: #eee;
+}
+.ItemSlug-expandBtn{
+	background-color: var(--sec);
+}
+.ItemSlug-expanded{
+	transform: rotate(0deg);
+}
+
+.ItemSlug-notexpanded{
+	transform: rotate(180deg);
+}
+.ItemSlug-body{
+	padding: 10px 20px;
+	background-color: var(--main-color);
 }

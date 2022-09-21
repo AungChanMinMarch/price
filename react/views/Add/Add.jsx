@@ -41,19 +41,25 @@ const AddItem = ()=>{
 			<Input label="Price" name="price" state={itemForm} setter={setItemForm} type="number"/>
 
 			{state && <RadiosInput
-				label="Place"
-				name="place"
-				state={itemForm}
-				setter={setItemForm} 
-				radios={state.places?.map((place)=>({value: place, label: place}))} />}
-
-			{state && <RadiosInput
 				label="Shop You Bought"
 				name="from"
 				state={itemForm}
 				setter={setItemForm} 
 				radios={state?.froms?.map((from)=>({value: from, label: from}))}
 				/>}
+
+			{state && <RadiosInput
+				label="Place"
+				name="place"
+				state={itemForm}
+				setter={setItemForm} 
+				radios={state.places?.map((place)=>({value: place, label: place}))} />}
+
+			<fieldset>
+				<legend>Interest</legend>
+				<Input label="Interest" name="interest" state={itemForm} setter={setItemForm} type="number"/>
+				<Input label="Amount" name="amount" state={itemForm} setter={setItemForm} type="number"/>
+			</fieldset>
 
 			<Input label="Date" name="date" state={itemForm} setter={setItemForm} type="date" defaultValue={today}/>
 			

@@ -42,6 +42,7 @@ const Home = ()=>{
 			gps[gpName] = [];
 		})
 		items.map(item => {
+			if(item[activeGp]) //item[activeGp] is not undefined
 			gps[item[activeGp]].push(item)
 		})
 		return gps
@@ -73,12 +74,14 @@ const Home = ()=>{
 							}
 						</fieldset> 
 					))
-					: items?.map(item => <ItemSlug key={item._id} item={item} navToEdit={navToEdit} gpTypes={gpTypes}/>)
+					: <div className="group">
+						{items?.map(item => <ItemSlug key={item._id} item={item} navToEdit={navToEdit} gpTypes={gpTypes}/>)}
+					</div>
 					}
 				</main>
 			}
 			<div 
-				className="add-icon"
+				className="add-icon add-item-icon"
 				onClick={()=>navigate("/add", { state: { froms: groupObj.from, places: groupObj.place}})}
 			></div>
 		</div>

@@ -7,13 +7,20 @@ const ItemSlug = ({item, navToEdit, gpTypes})=>{
 	return (
 		<div className="ItemSlug" >
 			<div className="ItemSlug-nav">
-				<header className="ItemSlug-header fbox" onClick={navToEdit(item)}>
+				<header className="ItemSlug-header fbox">
 					<h2>{item.name}</h2>
 					<h4>{item.price}</h4>
 				</header>
-				<div onClick={()=>setIsExpended(prev =>!prev)}>{isExpended ? "Up" : "Down"}</div>
+				<img 
+					src="/svg/edit.svg" 
+					className="ItemSlug-btn ItemSlug-editBtn"
+					onClick={navToEdit(item)}/>
+				<img 
+					src="/svg/expand.svg" 
+					className={`ItemSlug-btn ItemSlug-expandBtn ${isExpended ? "ItemSlug-expanded" : "ItemSlug-notexpanded"}`}
+					onClick={()=>setIsExpended(prev =>!prev)}/>
 			</div>
-			{isExpended && <div>
+			{isExpended && <div className="ItemSlug-body">
 				{gpTypes.map(gpType => (
 					<div key={gpType}>{gpType} : {item[gpType]}</div>
 					))

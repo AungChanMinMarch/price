@@ -8,7 +8,7 @@ const config = {
     entry: './react/index.js',
 
     output: {
-        path: path.join(__dirname, '/dist'),
+        path: path.join(__dirname, '/public/dist'),
         filename: 'bundle.js',
         clean: true
     },
@@ -39,12 +39,7 @@ const config = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackPlugin({
-            filename: "index.html",
-            template: "./public/index.html",
-            inject: "body",
-        }),
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
 module.exports = (env, argv)=> {
