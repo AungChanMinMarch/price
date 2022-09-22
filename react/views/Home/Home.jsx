@@ -68,7 +68,6 @@ const Home = ()=>{
 					{(active != null)
 					? <div className="group">
 						{itemsGrouped[active]?.map(item => <ItemSlug key={item._id} item={item} navToEdit={navToEdit}/>)}
-						<ItemSlug key={item._id} item={item} navToEdit={navToEdit}/>
 					</div>
 					: itemsGrouped && Object.keys(itemsGrouped)?.map(placeName => (
 						<fieldset key={placeName} className="group">
