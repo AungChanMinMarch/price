@@ -59,9 +59,9 @@ const Home = ()=>{
 				? <h1>There is No Item... Please Add...</h1>
 				: <main>
 					{places?.length > 0 && <nav>
-						<button onClick={onClick(null)}>All</button>
+						<button className={active === null && "active-btn"} onClick={onClick(null)}>All</button>
 						{places.map(placeName => (
-							<button key={placeName} onClick={onClick(placeName)}>{placeName}</button>
+							<button className={active === placeName && "active-btn"} key={placeName} onClick={onClick(placeName)}>{placeName}</button>
 						))
 						}
 					</nav>}

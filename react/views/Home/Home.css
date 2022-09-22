@@ -39,6 +39,10 @@ nav{
 	flex-flow: row wrap;
 	gap:  20px;
 }
+.active-btn{
+	background-color: var(--sec-bgColor);
+	color: var(--main-color);
+}
 .group{
 	width: 100%;
 	max-width: 90vw;
