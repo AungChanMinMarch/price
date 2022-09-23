@@ -1,7 +1,6 @@
 .ItemSlug{
 	width: 90vw;
 	max-width: 350px;
-	margin: 20px auto;
 	background-color: var(--sec-color);
 	color: #000;
 }

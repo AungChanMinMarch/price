@@ -51,6 +51,9 @@ nav{
 .ItemSlug-container{
 	display: flex;
     flex-flow: row wrap;
+	justify-content: flex-start;
+	gap: 20px;
+	padding: 15px 30px;
 }
 #selectGp{
 	padding: 10px 5px;

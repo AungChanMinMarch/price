@@ -66,7 +66,7 @@ const Home = ()=>{
 						}
 					</nav>}
 					{(active != null)
-					? <div className="group">
+					? <div className="group ItemSlug-container">
 						{itemsGrouped[active]?.map(item => <ItemSlug key={item._id} item={item} navToEdit={navToEdit}/>)}
 					</div>
 					: itemsGrouped && Object.keys(itemsGrouped)?.map(placeName => (
