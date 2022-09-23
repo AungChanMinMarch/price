@@ -9,7 +9,10 @@
 .Input > label, .RadiosInput > legend{
 	color: var(--main-color);
 	font-size: 20rem;
+	/*
+	removed this to show OK in myanmar font
 	letter-spacing: 0.8px;
+	*/
 }
 .Input > input{
 	padding: 5px 10px;
@@ -25,4 +28,7 @@
 .add-new-radio{
 	padding: 10px 10px;
 	font-size: 20rem;
+}
+input{
+	f
 }
